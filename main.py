@@ -2,11 +2,14 @@
 from flask import Flask, render_template, Response
 import threading
 import cv2
+import os
+from time import sleep
 
 
 app = Flask(__name__)
 frame = bytearray()
 
+# !npm install -g localtunnel
 
 @app.route('/')
 def index():
@@ -48,7 +51,13 @@ def startStreaming():
     video.release()
     cv2.destroyAllWindows()
 
+def runServer():
+    sleep(2)
+    print(os.system('lt --port 5000'))
+
 if __name__ == '__main__':
     p = threading.Thread(target=startStreaming)
+    p.start()
+    p = threading.Thread(target=runServer)
     p.start()
     app.run(port=5000)
