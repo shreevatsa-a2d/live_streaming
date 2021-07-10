@@ -28,7 +28,7 @@ def startStreaming():
     global frame
     while True:
         isclosed=0
-        video = cv2.VideoCapture("video.mp4")
+        video = cv2.VideoCapture("input_video.mp4")
         while(video.isOpened()):
             success, image = video.read()
 
@@ -51,4 +51,4 @@ def startStreaming():
 if __name__ == '__main__':
     p = threading.Thread(target=startStreaming)
     p.start()
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='192.168.15.9', debug=True,port=5000)
