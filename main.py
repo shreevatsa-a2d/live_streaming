@@ -51,4 +51,4 @@ def startStreaming():
 if __name__ == '__main__':
     p = threading.Thread(target=startStreaming)
     p.start()
-    app.run(host='192.168.15.9', debug=True,port=5000)
+    app.run(port=5000)
